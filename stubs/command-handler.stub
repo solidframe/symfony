@@ -1,0 +1,14 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use SolidFrame\Cqrs\CommandHandler;
+
+final readonly class {{ class }} implements CommandHandler
+{
+    public function __invoke({{ command }} $command): void
+    {
+    }
+}

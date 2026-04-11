@@ -1,0 +1,15 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use SolidFrame\Cqrs\QueryHandler;
+
+final readonly class {{ class }} implements QueryHandler
+{
+    public function __invoke({{ query }} $query): mixed
+    {
+        // TODO: implement
+    }
+}

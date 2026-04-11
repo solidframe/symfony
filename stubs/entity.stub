@@ -1,0 +1,16 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use SolidFrame\Core\Identity\IdentityInterface;
+use SolidFrame\Ddd\Entity\AbstractEntity;
+
+final class {{ class }} extends AbstractEntity
+{
+    public function __construct(IdentityInterface $identity)
+    {
+        parent::__construct($identity);
+    }
+}

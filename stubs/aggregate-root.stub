@@ -1,0 +1,20 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use SolidFrame\Core\Identity\IdentityInterface;
+use SolidFrame\Ddd\Aggregate\AbstractAggregateRoot;
+
+final class {{ class }} extends AbstractAggregateRoot
+{
+    public static function create(IdentityInterface $identity): self
+    {
+        $aggregate = new self($identity);
+
+        // $aggregate->recordThat(...);
+
+        return $aggregate;
+    }
+}

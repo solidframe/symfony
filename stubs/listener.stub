@@ -1,0 +1,14 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use SolidFrame\EventDriven\EventListener;
+
+final class {{ class }} implements EventListener
+{
+    public function __invoke({{ event }} $event): void
+    {
+    }
+}

@@ -1,0 +1,21 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use SolidFrame\Laravel\Modular\ModuleServiceProvider;
+use SolidFrame\Modular\Module\ModuleInterface;
+
+final class {{ class }}ServiceProvider extends ModuleServiceProvider
+{
+    public function module(): ModuleInterface
+    {
+        return new {{ class }}Module();
+    }
+
+    public function register(): void
+    {
+        //
+    }
+}

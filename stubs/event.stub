@@ -1,0 +1,24 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use SolidFrame\Core\Event\DomainEventInterface;
+
+final readonly class {{ class }} implements DomainEventInterface
+{
+    public function __construct(private \DateTimeImmutable $occurredAt = new \DateTimeImmutable())
+    {
+    }
+
+    public function eventName(): string
+    {
+        return '{{ class }}';
+    }
+
+    public function occurredAt(): \DateTimeImmutable
+    {
+        return $this->occurredAt;
+    }
+}
