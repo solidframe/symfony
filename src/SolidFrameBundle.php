@@ -239,6 +239,11 @@ final class SolidFrameBundle extends AbstractBundle
         $builder->register(\SolidFrame\Modular\Registry\ModuleRegistryInterface::class)
             ->setClass(\SolidFrame\Modular\Registry\InMemoryModuleRegistry::class)
             ->setPublic(true);
+
+        $builder->register(Console\ModuleListCommand::class)
+            ->setAutoconfigured(true)
+            ->setAutowired(true)
+            ->addTag('console.command');
     }
 
     /**
@@ -265,5 +270,10 @@ final class SolidFrameBundle extends AbstractBundle
                 ->setClass(\SolidFrame\Saga\Store\InMemorySagaStore::class)
                 ->setPublic(true);
         }
+
+        $builder->register(Console\SagaStatusCommand::class)
+            ->setAutoconfigured(true)
+            ->setAutowired(true)
+            ->addTag('console.command');
     }
 }
