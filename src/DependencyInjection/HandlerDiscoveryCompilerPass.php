@@ -45,7 +45,7 @@ final class HandlerDiscoveryCompilerPass implements CompilerPassInterface
             return;
         }
 
-        if (! class_exists(\SolidFrame\Cqrs\CommandHandler::class)) {
+        if (! interface_exists(\SolidFrame\Cqrs\CommandHandler::class)) {
             return;
         }
 
@@ -55,9 +55,11 @@ final class HandlerDiscoveryCompilerPass implements CompilerPassInterface
             return;
         }
 
-        // Register handler classes as services
+        // Register handler classes as public services (container needs to resolve them)
         foreach ($handlers as $handlerClass) {
-            if (! $container->has($handlerClass)) {
+            if ($container->has($handlerClass)) {
+                $container->getDefinition($handlerClass)->setPublic(true);
+            } else {
                 $container->register($handlerClass)
                     ->setAutowired(true)
                     ->setPublic(true);
@@ -78,7 +80,7 @@ final class HandlerDiscoveryCompilerPass implements CompilerPassInterface
             return;
         }
 
-        if (! class_exists(\SolidFrame\Cqrs\QueryHandler::class)) {
+        if (! interface_exists(\SolidFrame\Cqrs\QueryHandler::class)) {
             return;
         }
 
@@ -89,7 +91,9 @@ final class HandlerDiscoveryCompilerPass implements CompilerPassInterface
         }
 
         foreach ($handlers as $handlerClass) {
-            if (! $container->has($handlerClass)) {
+            if ($container->has($handlerClass)) {
+                $container->getDefinition($handlerClass)->setPublic(true);
+            } else {
                 $container->register($handlerClass)
                     ->setAutowired(true)
                     ->setPublic(true);
@@ -110,7 +114,7 @@ final class HandlerDiscoveryCompilerPass implements CompilerPassInterface
             return;
         }
 
-        if (! class_exists(\SolidFrame\EventDriven\EventListener::class)) {
+        if (! interface_exists(\SolidFrame\EventDriven\EventListener::class)) {
             return;
         }
 
@@ -122,7 +126,9 @@ final class HandlerDiscoveryCompilerPass implements CompilerPassInterface
 
         foreach ($listeners as $listenerClasses) {
             foreach ($listenerClasses as $listenerClass) {
-                if (! $container->has($listenerClass)) {
+                if ($container->has($listenerClass)) {
+                    $container->getDefinition($listenerClass)->setPublic(true);
+                } else {
                     $container->register($listenerClass)
                         ->setAutowired(true)
                         ->setPublic(true);
